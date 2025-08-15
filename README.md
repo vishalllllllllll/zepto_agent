@@ -8,13 +8,17 @@ Designed a scheduled agent that integrates messaging-based user input with full 
 
 ## Folder Structure
 
-
+```
 zepto_automation
 │── n8n_workflow.json   # n8n workflow with Telegram trigger + HTTP node
 │── server.py           # Flask server AND Selenium automation script for Zepto
 │── test.py             # Script to save Chrome profile + Zepto login session
+│── requirements.txt    # Python dependencies
 │── README.md
+│── venv/               # Optional virtual environment for Python dependencies
+```
 
+---
 
 ## Prerequisites
 
@@ -24,10 +28,11 @@ zepto_automation
 * n8n instance (Docker or local)
 * Telegram Bot (created through BotFather)
 * Ngrok (for exposing your Flask endpoint to Internet)
+* (Optional) Python virtual environment
 
 ---
 
-## Setup Instructions
+## Installation & Configuration
 
 ### 1. Create a Telegram Bot
 
@@ -35,7 +40,32 @@ zepto_automation
 2. Run `/newbot` and follow the instructions
 3. Copy the **Bot Token** (you’ll need it in n8n)
 
-### 2. Configure n8n
+### 2. Setup Python Virtual Environment (Recommended)
+
+```bash
+python -m venv venv
+source venv/bin/activate      # Linux/macOS
+venv\Scripts\activate         # Windows
+```
+
+### 3. Install Python Dependencies
+
+Create a `requirements.txt` file with the following content:
+
+```
+selenium
+requests
+pyTelegramBotAPI
+flask
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure n8n
 
 1. Add a **Telegram Trigger** node and provide your Bot Token
 2. Add an **HTTP Request** node with:
@@ -46,18 +76,15 @@ zepto_automation
 3. Connect Telegram Trigger → HTTP Request
 4. Activate the workflow
 
-### 3. Setup & Run Flask Server
+### 5. Setup & Run Flask Server
 
 ```bash
-pip install flask selenium webdriver-manager
-
-# In terminal:
 python server.py
 ```
 
 > The server exposes a single endpoint `/order` that accepts `POST` requests with the JSON body: `{ "item": "apple" }`
 
-### 4. Configure Ngrok
+### 6. Configure Ngrok
 
 ```bash
 ngrok http 5000
@@ -65,7 +92,7 @@ ngrok http 5000
 
 Copy the **https** URL from ngrok and update the URL in the n8n HTTP Request node.
 
-### 5. Save Chrome Profile and Zepto Login
+### 7. Save Chrome Profile and Zepto Login
 
 ```bash
 python test.py
@@ -73,7 +100,7 @@ python test.py
 
 This opens Chrome → manually log in to Zepto → close the browser. Your Chrome profile will be saved and reused for automation.
 
-### 6. Run the Automation Script
+### 8. Run the Automation Script
 
 The `server.py` script directly runs the Selenium automation logic. It:
 
@@ -103,6 +130,7 @@ Once payment is complete, the script prints `Order Confirmed`.
 * The UPI ID and token are **hard-coded** in `server.py`. Exercise caution if sharing or publishing the code.
 * Ngrok free tier rotates URLs, so update n8n whenever ngrok restarts.
 * Telegram can be leveraged for additional functionality (e.g., cancel order, check status, schedule orders).
+* Using a virtual environment is recommended to isolate dependencies.
 
 ---
 
