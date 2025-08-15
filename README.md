@@ -10,7 +10,7 @@ Designed a scheduled agent that integrates messaging-based user input with full 
 
 ```
 zepto_automation
-│── n8n_workflow.json   # n8n workflow with Telegram trigger + HTTP node
+│── zepto_agent_workflow.json   # n8n workflow with Telegram trigger + HTTP node
 │── server.py           # Flask server AND Selenium automation script for Zepto
 │── test.py             # Script to save Chrome profile + Zepto login session
 │── requirements.txt    # Python dependencies
