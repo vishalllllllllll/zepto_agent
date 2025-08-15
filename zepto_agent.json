@@ -1,0 +1,97 @@
+{
+  "name": "zepto_agent",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a7bb4515-bb0b-4de6-88f5-bae301b79581",
+      "name": "Telegram Trigger",
+      "webhookId": "9b722c7c-15f8-4300-9b17-17e9888bfc9c",
+      "credentials": {
+        "telegramApi": {
+          "id": "7sRUQkURfrOWPk52",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"item\": \"{{ $json[\"message\"][\"text\"] }}\",\n  \"chat_id\": \"{{ $json[\"message\"][\"chat\"][\"id\"] }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "1ee8fdea-ad91-4564-879c-8b38b966b79c",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "  https://e37b2815c0c1.ngrok-free.app/order",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"item\": \"{{ $json[\"item\"] }}\",\n  \"chat_id\": \"{{ $json[\"chat_id\"] }}\"\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        416,
+        0
+      ],
+      "id": "b69b184e-fbfe-4c9a-853a-0c5b5ac8e3f9",
+      "name": "HTTP Request"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "ff7b8203-f31e-4d76-89fc-34807006d751",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9203a180d7281b1200e904bbe022c6d772e2c1a8f08fb12ca8cd7cbc852a8a69"
+  },
+  "id": "InD1jggHQEsQSPd5",
+  "tags": []
+}
