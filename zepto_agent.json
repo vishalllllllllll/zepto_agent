@@ -1,5 +1,5 @@
 {
-  "name": "zepto_agent",
+  "name": "ENTER_VALUE_HERE",
   "nodes": [
     {
       "parameters": {
@@ -8,54 +8,54 @@
         ],
         "additionalFields": {}
       },
-      "type": "n8n-nodes-base.telegramTrigger",
+      "type": "ENTER_VALUE_HERE",
       "typeVersion": 1.2,
       "position": [
         0,
         0
       ],
-      "id": "a7bb4515-bb0b-4de6-88f5-bae301b79581",
-      "name": "Telegram Trigger",
-      "webhookId": "9b722c7c-15f8-4300-9b17-17e9888bfc9c",
+      "id": "ENTER_ID_HERE",
+      "name": "ENTER_VALUE_HERE",
+      "webhookId": "ENTER_ID_HERE",
       "credentials": {
         "telegramApi": {
-          "id": "7sRUQkURfrOWPk52",
-          "name": "Telegram account"
+          "id": "ENTER_ID_HERE",
+          "name": "ENTER_VALUE_HERE"
         }
       }
     },
     {
       "parameters": {
         "mode": "raw",
-        "jsonOutput": "={\n  \"item\": \"{{ $json[\"message\"][\"text\"] }}\",\n  \"chat_id\": \"{{ $json[\"message\"][\"chat\"][\"id\"] }}\"\n}\n",
+        "jsonOutput": "ENTER_VALUE_HERE",
         "options": {}
       },
-      "type": "n8n-nodes-base.set",
+      "type": "ENTER_VALUE_HERE",
       "typeVersion": 3.4,
       "position": [
         208,
         0
       ],
-      "id": "1ee8fdea-ad91-4564-879c-8b38b966b79c",
-      "name": "Edit Fields"
+      "id": "ENTER_ID_HERE",
+      "name": "ENTER_VALUE_HERE"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "  https://e37b2815c0c1.ngrok-free.app/order",
+        "url": "ENTER_URL_HERE",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"item\": \"{{ $json[\"item\"] }}\",\n  \"chat_id\": \"{{ $json[\"chat_id\"] }}\"\n}\n",
+        "jsonBody": "ENTER_VALUE_HERE",
         "options": {}
       },
-      "type": "n8n-nodes-base.httpRequest",
+      "type": "ENTER_VALUE_HERE",
       "typeVersion": 4.2,
       "position": [
         416,
         0
       ],
-      "id": "b69b184e-fbfe-4c9a-853a-0c5b5ac8e3f9",
-      "name": "HTTP Request"
+      "id": "ENTER_ID_HERE",
+      "name": "ENTER_VALUE_HERE"
     }
   ],
   "pinData": {},
@@ -64,7 +64,7 @@
       "main": [
         [
           {
-            "node": "Edit Fields",
+            "node": "ENTER_VALUE_HERE",
             "type": "main",
             "index": 0
           }
@@ -75,7 +75,7 @@
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "ENTER_VALUE_HERE",
             "type": "main",
             "index": 0
           }
@@ -87,11 +87,11 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "ff7b8203-f31e-4d76-89fc-34807006d751",
+  "versionId": "ENTER_VALUE_HERE",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "9203a180d7281b1200e904bbe022c6d772e2c1a8f08fb12ca8cd7cbc852a8a69"
+    "instanceId": "ENTER_VALUE_HERE"
   },
-  "id": "InD1jggHQEsQSPd5",
+  "id": "ENTER_ID_HERE",
   "tags": []
 }
