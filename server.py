@@ -10,9 +10,9 @@ import time
 import requests
 
 # -------------------- CONFIG --------------------
-TELEGRAM_TOKEN = "8403793190:AAG6SEMvR_YfWDSa2u1N-s4tYq3OCCTbXHQ"
-UPI_ID = "vishalmuru6-1@okhdfcbank"
-CHROME_PROFILE_PATH = r"C:\\Users\\Visha\\vscode project files\\zepto_agent\\chrome_profile"
+TELEGRAM_TOKEN = "your-telegram-token"
+UPI_ID = "your-upi-id"
+CHROME_PROFILE_PATH = r"your-chrome-profile-path"
 # ------------------------------------------------
 
 app = Flask(__name__)
@@ -227,3 +227,4 @@ def test():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
+
